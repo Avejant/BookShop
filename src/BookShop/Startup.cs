@@ -37,6 +37,21 @@ namespace BookShop
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            // Configure a rewrite rule to auto-lookup for standard default files such as index.html.
+            app.UseDefaultFiles();
+
+            // Serve static files (html, css, js, images & more). See also the following URL:
+            // https://docs.asp.net/en/latest/fundamentals/static-files.html for further reference.
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                OnPrepareResponse = (context) =>
+                {
+                    // Disable caching for all static files.
+                    context.Context.Response.Headers["Cache-Control"] = Configuration["StaticFiles:Headers:Cache-Control"];
+                    context.Context.Response.Headers["Pragma"] = Configuration["StaticFiles:Headers:Pragma"];
+                    context.Context.Response.Headers["Expires"] = Configuration["StaticFiles:Headers:Expires"];
+                }
+            });
             app.UseMvc();
         }
     }
