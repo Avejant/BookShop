@@ -53,3 +53,10 @@ packages/**
 *.resharper
 *.ncrunch*
 *.ndproj
+src/BookShop.Web/node_modules/
+src/BookShop.Data/Migrations/
+src/BookShop.Data/project.lock.json
+src/BookShop.Web/project.lock.json
+src/BookShop.Web/Scripts/app/**/*.js
+src/BookShop.Web/wwwroot/app/
+src/BookShop.Web/wwwroot/js/
