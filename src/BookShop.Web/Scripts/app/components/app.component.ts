@@ -2,7 +2,17 @@
 
 @Component({
     selector: "bookshop",
-    template: `<h1>Book Shop</h1><div>...the best is yet to come!</div>`
+    template: `
+        <h1>{{title}}</h1>
+            <div class="menu">
+                <a class="home" [routerLink]="['']">Home</a>
+                | <a class="login" [routerLink]="['login']">Login</a>
+                | <a class="search" [routerLink]="['search']">Search</a>
+            </div>
+        <router-outlet></router-outlet>
+    `
 })
 
-export class AppComponent { }
+export class AppComponent {
+    title = "Book Shop";
+}
