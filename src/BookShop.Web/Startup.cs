@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using BookShop.Web.Authentication;
 using Microsoft.IdentityModel.Tokens;
+using BookShop.Business.Interfaces;
+using BookShop.Business.Managers;
 
 namespace BookShop
 {
@@ -52,6 +54,8 @@ namespace BookShop
 
             // Add ApplicationDbContext's DbSeeder
             services.AddSingleton<DbSeeder>();
+            services.AddTransient<IAuthorManager, AuthorManager>();
+            services.AddTransient<IUserManager, UserManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
