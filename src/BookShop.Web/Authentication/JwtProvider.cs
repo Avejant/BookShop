@@ -1,4 +1,6 @@
-﻿using BookShop.Data;
+﻿using BookShop.Business.Interfaces;
+using BookShop.Business.Managers;
+using BookShop.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
@@ -19,11 +21,7 @@ namespace BookShop.Web.Authentication
         private readonly RequestDelegate next;
         private TimeSpan TokenExpiration;
         private SigningCredentials SigningCredentials;
-
-        private ApplicationDbContext DbContext;
-        private UserManager<ApplicationUser> UserManager;
-        private SignInManager<ApplicationUser> SignInManager;
-
+        private IUserManager userManager;
         #endregion
 
         #region Static Members
@@ -37,17 +35,13 @@ namespace BookShop.Web.Authentication
 
         #region Constructor
 
-        public JwtProvider(RequestDelegate next, 
-            ApplicationDbContext dbContext, 
-            UserManager<ApplicationUser> userManager, 
-            SignInManager<ApplicationUser> signInManager)
+        public JwtProvider(RequestDelegate next,
+            IUserManager userManager)
         {
             this.next = next;
             this.TokenExpiration = TimeSpan.FromMinutes(10);
             this.SigningCredentials = new SigningCredentials(SecurityKey, SecurityAlgorithms.HmacSha256);
-            this.DbContext = dbContext;
-            this.UserManager = userManager;
-            this.SignInManager = signInManager;
+            this.userManager = userManager;
         }
 
         #endregion
@@ -78,13 +72,15 @@ namespace BookShop.Web.Authentication
                 string username = httpContext.Request.Form["username"];
                 string password = httpContext.Request.Form["password"];
 
-                var user = await UserManager.FindByNameAsync(username);
-                if(user == null && username.Contains("@"))
+                var user = await userManager.GetUserByName(username);
+                if(user == null)
                 {
-                    user = await UserManager.FindByEmailAsync(username);
+                    httpContext.Response.StatusCode = 400;
+                    await httpContext.Response.WriteAsync("User with this username doesn't exist");
+                    return;
                 }
 
-                var success = user != null && await UserManager.CheckPasswordAsync(user, password);
+                var success = await userManager.CheckPassword(user, password);
                 if (success)
                 {
                     DateTime now = DateTime.UtcNow;
@@ -114,7 +110,7 @@ namespace BookShop.Web.Authentication
             }
 
             httpContext.Response.StatusCode = 400;
-            await httpContext.Response.WriteAsync("Invalid username or password");
+            await httpContext.Response.WriteAsync("Invalid password");
         }
         #endregion
     }

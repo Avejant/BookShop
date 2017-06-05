@@ -8,7 +8,7 @@ import { AuthService } from "../services/auth.service";
     template: `
         <h2> {{title}} </h2>
             <div *ngIf="loginError">
-                <p><strong>Warning:</strong> wrong user or password.</p>
+                <p><strong>Warning:</strong> {{errorMessage}}</p>
             </div>
             <form class="form-login" [formGroup]="loginForm" (submit)="performLogin($event)">
                 <input formControlName="username" type="text" class="form-control" placeholder="Your username or e-mail address" required autofocus />
@@ -28,6 +28,7 @@ export class LoginComponent {
     title = "Login";
     loginForm = null;
     loginError = false;
+    errorMessage = "";
 
     constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
         this.loginForm = fb.group({
@@ -49,6 +50,7 @@ export class LoginComponent {
             (err) => {
                 console.log(err);
                 this.loginError = true;
+                this.errorMessage = err._body;
             });
     }
 }
