@@ -6,8 +6,9 @@ import { AuthService } from "../services/auth.service";
 @Component({
     selector: "login",
     template: `
-        <h2> {{title}} </h2>
-            <div *ngIf="loginError">
+        <div class="login-container">
+            <h3 class="form-login-heading">Login</h3>
+            <div class="alert alert-danger" *ngIf="loginError">
                 <p><strong>Warning:</strong> {{errorMessage}}</p>
             </div>
             <form class="form-login" [formGroup]="loginForm" (submit)="performLogin($event)">
@@ -21,6 +22,7 @@ import { AuthService } from "../services/auth.service";
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>  
             </form>
+        </div>
     `
 })
 
@@ -44,7 +46,6 @@ export class LoginComponent {
         this.authService.login(username, password).subscribe((data) => {
             this.loginError = false;
             var auth = this.authService.getAuth();
-            alert("Token is: " + auth.accessToken);
             this.router.navigate([""]);
         },
             (err) => {

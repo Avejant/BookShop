@@ -60,3 +60,4 @@ src/BookShop.Web/project.lock.json
 src/BookShop.Web/Scripts/app/**/*.js
 src/BookShop.Web/wwwroot/app/
 src/BookShop.Web/wwwroot/js/
+src/BookShop.Web/wwwroot/css/style.css
