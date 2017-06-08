@@ -1,4 +1,4 @@
-﻿{
+{
   "buildOptions": {
     "emitEntryPoint": true
   },
@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "BookShop.Data": "1.0.0-*",
+    "BookShop.Shared": "1.0.0-*",
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
       "type": "platform"

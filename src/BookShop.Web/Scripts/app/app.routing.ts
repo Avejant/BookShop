@@ -8,6 +8,7 @@ import { LoginComponent } from "./components/login.component";
 import { BookSearchComponent } from "./components/book-search.component";
 import { PageNotFoundComponent } from "./components/page-not-found.component";
 import { AuthorComponent } from "./components/author.component";
+import { CategoryBooksComponent } from "./components/category-books.component"
 
 const appRoutes: Routes = [
     {
@@ -33,6 +34,10 @@ const appRoutes: Routes = [
     {
         path: "books/author/:id",
         component: AuthorComponent
+    },
+    {
+        path: "books/category/:id",
+        component: CategoryBooksComponent
     },
     {
         path: "**",

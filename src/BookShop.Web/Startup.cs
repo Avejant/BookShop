@@ -56,6 +56,7 @@ namespace BookShop
             services.AddSingleton<DbSeeder>();
             services.AddTransient<IAuthorManager, AuthorManager>();
             services.AddTransient<IUserManager, UserManager>();
+            services.AddTransient<ICategoryManager, CategoryManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

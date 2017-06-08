@@ -35,7 +35,7 @@ import { AuthService } from "../services/auth.service";
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="main-container">
+<div class="container">
         <router-outlet></router-outlet>
 </div>
     `

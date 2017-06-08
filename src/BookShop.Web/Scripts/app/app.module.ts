@@ -15,6 +15,7 @@ import { BookSearchComponent } from "./components/book-search.component";
 import { PageNotFoundComponent } from "./components/page-not-found.component";
 import { AuthorComponent } from "./components/author.component";
 import { CategoryListComponent } from "./components/category-list.component";
+import { CategoryBooksComponent } from "./components/category-books.component";
 
 import { AppRouting } from "./app.routing";
 import { BookService } from "./services/book.service";
@@ -34,7 +35,8 @@ import { AuthHttp } from "./wrappers/auth.http";
         LoginComponent,
         PageNotFoundComponent,
         AuthorComponent,
-        CategoryListComponent
+        CategoryListComponent,
+        CategoryBooksComponent
     ],
     // modules
     imports: [
