@@ -1,11 +1,10 @@
 ﻿import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { BookListComponent } from "./components/book-list.component";
 import { BookViewComponent } from "./components/book-view.component";
 import { HomeComponent } from "./components/home.component";
 import { LoginComponent } from "./components/login.component";
-import { BookSearchComponent } from "./components/book-search.component";
+import { ExtendedSearchComponent } from "./components/extended-search.component";
 import { PageNotFoundComponent } from "./components/page-not-found.component";
 import { AuthorComponent } from "./components/author.component";
 import { CategoryBooksComponent } from "./components/category-books.component"
@@ -21,7 +20,7 @@ const appRoutes: Routes = [
     },
     {
         path: "search",
-        component: BookSearchComponent
+        component: ExtendedSearchComponent
     },
     {
         path: "login",

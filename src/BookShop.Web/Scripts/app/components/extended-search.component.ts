@@ -23,12 +23,12 @@ import { Query } from "../models/query";
         <br>
         <input type="button" value="Search" (click)="search(query)">
         </form>
-        <book-list [class]='class' [query]='typedQuery'></book-list>
+        <short-book-list [class]='class' [query]='typedQuery'></short-book-list>
     `
 })
 
 
-export class BookSearchComponent {
+export class ExtendedSearchComponent {
     query: Query;
     typedQuery: Query;
     class: string;

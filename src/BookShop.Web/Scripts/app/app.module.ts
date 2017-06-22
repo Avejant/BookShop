@@ -7,15 +7,17 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import "rxjs/Rx";
 
 import { AppComponent } from "./components/app.component";
-import { BookListComponent } from "./components/book-list.component";
+import { ShortBookListComponent } from "./components/short-book-list.component";
 import { BookViewComponent } from "./components/book-view.component";
 import { HomeComponent } from "./components/home.component";
 import { LoginComponent } from "./components/login.component";
-import { BookSearchComponent } from "./components/book-search.component";
+import { ExtendedSearchComponent } from "./components/extended-search.component";
 import { PageNotFoundComponent } from "./components/page-not-found.component";
 import { AuthorComponent } from "./components/author.component";
 import { CategoryListComponent } from "./components/category-list.component";
 import { CategoryBooksComponent } from "./components/category-books.component";
+import { SearchComponent } from "./components/search.component";
+import { CartComponent } from "./components/cart.component";
 
 import { AppRouting } from "./app.routing";
 import { BookService } from "./services/book.service";
@@ -28,15 +30,17 @@ import { AuthHttp } from "./wrappers/auth.http";
     // directives, components, and pipes
     declarations: [
         AppComponent,
-        BookListComponent,
+        ShortBookListComponent,
         BookViewComponent,
-        BookSearchComponent,
+        ExtendedSearchComponent,
         HomeComponent,
         LoginComponent,
         PageNotFoundComponent,
         AuthorComponent,
         CategoryListComponent,
-        CategoryBooksComponent
+        CategoryBooksComponent,
+        SearchComponent,
+        CartComponent
     ],
     // modules
     imports: [

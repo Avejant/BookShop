@@ -23,8 +23,18 @@ import { AuthService } from "../services/auth.service";
                     <a class="home" [routerLink]="['']">Home</a>
                 </li>
                 <li [class.active]="isActive(['search'])">
-                    <a class="about" [routerLink]="['search']">Search</a>
+                    <a class="search" [routerLink]="['search']">Extended Search</a>
                 </li>
+                <li>
+                    <a class="authors">Authors</a>
+                </li>
+                <li>
+                    <a class="about">About</a>
+                </li>
+            </ul>
+            <search></search>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="navbar-text"><cart></cart></li>
                 <li *ngIf="!authService.isLoggedIn()" [class.active]="isActive(['login'])">
                     <a class="login" [routerLink]="['login']">Login</a>
                 </li>
