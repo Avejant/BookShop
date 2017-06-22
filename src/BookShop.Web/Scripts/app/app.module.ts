@@ -6,39 +6,48 @@ import { RouterModule } from "@angular/router";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import "rxjs/Rx";
 
+//Components
 import { AppComponent } from "./components/app.component";
 import { ShortBookListComponent } from "./components/short-book-list.component";
-import { BookViewComponent } from "./components/book-view.component";
-import { HomeComponent } from "./components/home.component";
 import { LoginComponent } from "./components/login.component";
-import { ExtendedSearchComponent } from "./components/extended-search.component";
-import { PageNotFoundComponent } from "./components/page-not-found.component";
-import { AuthorComponent } from "./components/author.component";
 import { CategoryListComponent } from "./components/category-list.component";
-import { CategoryBooksComponent } from "./components/category-books.component";
 import { SearchComponent } from "./components/search.component";
 import { CartComponent } from "./components/cart.component";
 
+//Pages 
+import { BookViewPage } from "./pages/book-view.page";
+import { CategoryBooksListPage } from "./pages/category-books-list.page";
+import { ExtendedSearchPage } from "./pages/extended-search.page";
+import { HomePage } from "./pages/home.page";
+import { LoginPage } from "./pages/login.page";
+import { NotFoundPage } from "./pages/not-found.page";
+import { AuthorListPage } from "./pages/author-list.page";
+
+//Routing
 import { AppRouting } from "./app.routing";
+
+// Services
 import { BookService } from "./services/book.service";
 import { AuthorService } from "./services/author.service";
 import { CategoryService } from "./services/category.service";
 import { AuthService } from "./services/auth.service";
+
+//Wrappers
 import { AuthHttp } from "./wrappers/auth.http";
 
 @NgModule({
-    // directives, components, and pipes
+    // directives, components, pages and pipes
     declarations: [
         AppComponent,
         ShortBookListComponent,
-        BookViewComponent,
-        ExtendedSearchComponent,
-        HomeComponent,
+        BookViewPage,
+        ExtendedSearchPage,
+        HomePage,
         LoginComponent,
-        PageNotFoundComponent,
-        AuthorComponent,
+        LoginPage,
+        NotFoundPage,
         CategoryListComponent,
-        CategoryBooksComponent,
+        CategoryBooksListPage,
         SearchComponent,
         CartComponent
     ],

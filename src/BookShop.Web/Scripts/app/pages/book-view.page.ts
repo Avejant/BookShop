@@ -4,7 +4,7 @@ import { Book } from "../models/book";
 import { BookService } from "../services/book.service";
 
 @Component({
-    selector: "book-view",
+    selector: "book-view-page",
     template: `
         <div *ngIf="book" class="book-view">
             <h2> {{book.Title}} </h2>
@@ -16,7 +16,7 @@ import { BookService } from "../services/book.service";
     `
 })
 
-export class BookViewComponent {
+export class BookViewPage {
     book: Book;
 
     constructor(private bookService: BookService,
@@ -28,7 +28,7 @@ export class BookViewComponent {
         var id = +this.activatedRoute.snapshot.params["id"];
         if (id) {
             this.bookService.get(id).subscribe(
-                book => { this.book = book;}
+                book => { this.book = book; }
             );
         }
         else {

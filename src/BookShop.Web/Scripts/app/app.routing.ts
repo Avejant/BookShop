@@ -1,18 +1,18 @@
 ﻿import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
-import { BookViewComponent } from "./components/book-view.component";
-import { HomeComponent } from "./components/home.component";
-import { LoginComponent } from "./components/login.component";
-import { ExtendedSearchComponent } from "./components/extended-search.component";
-import { PageNotFoundComponent } from "./components/page-not-found.component";
-import { AuthorComponent } from "./components/author.component";
-import { CategoryBooksComponent } from "./components/category-books.component"
+import { BookViewPage } from "./pages/book-view.page";
+import { HomePage } from "./pages/home.page";
+import { LoginPage } from "./pages/login.page";
+import { ExtendedSearchPage } from "./pages/extended-search.page";
+import { NotFoundPage } from "./pages/not-found.page";
+import { CategoryBooksListPage } from "./pages/category-books-list.page"
+import { AuthorListPage } from "./pages/author-list.page";
 
 const appRoutes: Routes = [
     {
         path: "",
-        component: HomeComponent
+        component: HomePage
     },
     {
         path: "home",
@@ -20,27 +20,27 @@ const appRoutes: Routes = [
     },
     {
         path: "search",
-        component: ExtendedSearchComponent
+        component: ExtendedSearchPage
     },
     {
         path: "login",
-        component: LoginComponent
+        component: LoginPage
     },
     {
         path: "book/:id",
-        component: BookViewComponent
-    },
-    {
-        path: "books/author/:id",
-        component: AuthorComponent
+        component: BookViewPage
     },
     {
         path: "books/category/:id",
-        component: CategoryBooksComponent
+        component: CategoryBooksListPage
+    },
+    {
+        path: "authors",
+        component: AuthorListPage
     },
     {
         path: "**",
-        component: PageNotFoundComponent
+        component: NotFoundPage
     }
 ];
 

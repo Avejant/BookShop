@@ -25,11 +25,11 @@ import { AuthService } from "../services/auth.service";
                 <li [class.active]="isActive(['search'])">
                     <a class="search" [routerLink]="['search']">Extended Search</a>
                 </li>
-                <li>
-                    <a class="authors">Authors</a>
+                <li [class.active]="isActive(['authors'])">
+                    <a class="authors" [routerLink]="['authors']">Authors</a>
                 </li>
-                <li>
-                    <a class="about">About</a>
+                <li [class.active]="isActive(['about'])">
+                    <a class="about" [routerLink]="['about']">About</a>
                 </li>
             </ul>
             <search></search>

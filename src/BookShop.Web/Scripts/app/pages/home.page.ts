@@ -1,7 +1,7 @@
 ﻿import { Component } from "@angular/core";
 
 @Component({
-    selector: "home",
+    selector: "home-page",
     template: `     
        <category-list></category-list>
        <div class="col-md-9">
@@ -12,4 +12,4 @@
     `
 })
 
-export class HomeComponent { }
+export class HomePage { }

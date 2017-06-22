@@ -3,7 +3,7 @@ import { BookService } from "../services/book.service";
 import { Query } from "../models/query";
 
 @Component({
-    selector: "book-search",
+    selector: "extended-search-page",
     template: `
         <form #thisForm="ngForm">
         <label>
@@ -28,7 +28,7 @@ import { Query } from "../models/query";
 })
 
 
-export class ExtendedSearchComponent {
+export class ExtendedSearchPage {
     query: Query;
     typedQuery: Query;
     class: string;
