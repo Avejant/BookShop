@@ -5,12 +5,20 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using BookShop.Shared.ViewModels;
 using BookShop.Shared.Helpers;
+using BookShop.Business.Interfaces;
+using BookShop.Shared.Enums;
 
 namespace BookShop.Web.Controllers
 {
     [Route("api/[controller]")]
     public class BooksController : Controller
     {
+        private IBookManager bookManager;
+        public BooksController(IBookManager bookManager)
+        {
+            this.bookManager = bookManager;
+        }
+        
         #region RESTful Conventions
         /// <summary>
         /// GET: api/books
@@ -30,9 +38,7 @@ namespace BookShop.Web.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return new JsonResult(GetSampleBooks()
-                .Where(b => b.Id == id)
-                .FirstOrDefault(),
+            return new JsonResult(this.bookManager.GetById(id),
                 DefaultJsonSettings);
         }
         #endregion
@@ -47,8 +53,8 @@ namespace BookShop.Web.Controllers
         public IActionResult GetLatest(int n)
         {
             if (n > MaxNumberOfBooks) n = MaxNumberOfBooks;
-            var items = GetSampleBooks().OrderByDescending(i => i.CreatedDate).Take(n);
-            return new JsonResult(items, DefaultJsonSettings);
+            var books = this.bookManager.GetAll(n, SortingType.ByCreatedDate, false);
+            return new JsonResult(books, DefaultJsonSettings);
         }
 
         [HttpGet("GetRandom")]
@@ -61,8 +67,8 @@ namespace BookShop.Web.Controllers
         public IActionResult GetRandom(int n)
         {
             if (n > MaxNumberOfBooks) n = MaxNumberOfBooks;
-            var items = GetSampleBooks().OrderBy(b => Guid.NewGuid()).Take(n);
-            return new JsonResult(items, DefaultJsonSettings);
+            var books = this.bookManager.GetAll(n, SortingType.ByRandom);
+            return new JsonResult(books, DefaultJsonSettings);
         }
 
         [HttpGet("GetMostViewed")]
@@ -75,34 +81,12 @@ namespace BookShop.Web.Controllers
         public IActionResult GetMostViewed(int n)
         {
             if (n > MaxNumberOfBooks) n = MaxNumberOfBooks;
-            var items = GetSampleBooks().OrderBy(b => b.ViewCount).Take(n);
-            return new JsonResult(items, DefaultJsonSettings);
+            var books = this.bookManager.GetAll(n, SortingType.ByViewCount);
+            return new JsonResult(books, DefaultJsonSettings);
         }
 
         #region Private Methods and Properties
-        private List<BookViewModel> GetSampleBooks(int num = 1000)
-        {
-            var books = new List<BookViewModel>();
-            DateTime date = new DateTime(2015, 12, 31).AddDays(-num);
-            var price = 2.05m;
-            for (int i = 1; i < num; i++)
-            {
-                date = date.AddDays(1);
-                price += 0.25m;
-                books.Add(new BookViewModel()
-                {
-                    Id = i,
-                    Title = string.Format("Book №{0}", i),
-                    Author = string.Format("Author №{0}", i % 5),
-                    Price = new Money(price).ToString(),
-                    CreatedDate = date,
-                    LastModifiedDate = date,
-                    ViewCount = num - 1
-                });
-           }
-           return books;
-        }
-
+ 
         private JsonSerializerSettings DefaultJsonSettings
         {
             get

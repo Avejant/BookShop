@@ -18,6 +18,7 @@ namespace BookShop.Shared.ViewModels
         public string Title { get; set; }
         public string Author { get; set; }
         public string Price { get; set; }
+        public string Description { get; set; }
 
         [JsonIgnore]
         public int ViewCount { get; set; }

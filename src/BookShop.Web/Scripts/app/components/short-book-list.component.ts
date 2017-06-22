@@ -22,7 +22,7 @@ import { Query } from "../models/query";
 					<div class="caption">
                             <center>
                             <p><i>{{book.Author}}</i></p>
-						    <a href="#"><p><b>{{book.Title}}</b></p></a>
+						    <a class="link-without-href" (click)="onSelect(book)"><p><b>{{book.Title}}</b></p></a>
 							<p>Price: {{book.Price}}</p>
                             <button type="button" class="btn btn-primary btn-sm">
                                 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Buy
@@ -93,7 +93,7 @@ export class ShortBookListComponent {
 
     onSelect(book: Book) {
         this.selectedBook = book;
-        //console.log("book with Id " + this.selectedBook.Id + " has been selected.");
-        //this.router.navigate(["book", this.selectedBook.Id]);
+        console.log("book with Id " + this.selectedBook.Id + " has been selected.");
+        this.router.navigate(["book", this.selectedBook.Id]);
     }
 }

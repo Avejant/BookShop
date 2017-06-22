@@ -57,6 +57,7 @@ namespace BookShop
             services.AddTransient<IAuthorManager, AuthorManager>();
             services.AddTransient<IUserManager, UserManager>();
             services.AddTransient<ICategoryManager, CategoryManager>();
+            services.AddTransient<IBookManager, BookManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

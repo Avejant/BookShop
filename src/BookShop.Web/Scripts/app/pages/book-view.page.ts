@@ -6,12 +6,17 @@ import { BookService } from "../services/book.service";
 @Component({
     selector: "book-view-page",
     template: `
+        <category-list></category-list>
+        <div class="col-md-8">
         <div *ngIf="book" class="book-view">
-            <h2> {{book.Title}} </h2>
-            <p (click)="showAuthorBooks(book.Author.Id)">Author: {{book.Author.Name}}</p>
-            <p (click)="showAuthorBooks(book.Author.Id)">Category: {{book.Category.Name}}</p>
-            <p> {{book.Description}} </p>
-            <p> {{book.Price}} <button>Buy</button></p>
+        <div class="panel panel-default">
+        <div class="panel-heading"><b>{{book.Title}}</b></div>
+            <div class="panel-body">
+                <p> {{book.Description}} </p>
+                <p> {{book.Price}} <button>Buy</button></p>
+            </div>
+        </div>
+        </div>
         </div>
     `
 })
