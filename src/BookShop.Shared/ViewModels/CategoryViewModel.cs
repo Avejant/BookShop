@@ -11,7 +11,7 @@ namespace BookShop.Shared.ViewModels
 
         }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
 
         [JsonIgnore]

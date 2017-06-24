@@ -19,7 +19,7 @@ namespace BookShop.Business.Managers
 
         public IEnumerable<CategoryViewModel> GetAll()
         {
-            return this.dbContext.Categories.Select(c => new CategoryViewModel {Id = c.Id.ToString(), Name = c.Name });
+            return this.dbContext.Categories.Select(c => new CategoryViewModel {Id = c.Id, Name = c.Name });
         }
     }
 }

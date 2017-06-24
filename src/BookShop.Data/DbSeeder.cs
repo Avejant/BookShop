@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BookShop.Shared.Helpers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -53,7 +54,6 @@ namespace BookShop.Data
             {
                 authors.Add(new Author()
                 {
-                    Id = Guid.NewGuid().ToString(),
                     Name = string.Format("Author №{0}", i)
                 });
             }
@@ -68,6 +68,7 @@ namespace BookShop.Data
             var authors = this.dbContext.Authors.ToList();
             var categories = this.dbContext.Categories.ToList();
             DateTime date = new DateTime(2015, 12, 31).AddDays(-num);
+            Random r = new Random((int)DateTime.Today.Ticks);
             var price = 2.05m;
             for (int i = 1; i <= num; i++)
             {
@@ -82,7 +83,10 @@ namespace BookShop.Data
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                    Price = price.ToString(),
+                    Price = new Money(price).ToString(),
+                    ISBN = i.ToString("D13"),
+                    PageCount = r.Next(200, 500),
+                    YearOfPublication = r.Next(1900, 2017),
                     CreatedDate = date,
                     LastModifiedDate = date,
                     ViewCount = num - 1
@@ -99,7 +103,6 @@ namespace BookShop.Data
             {
                 categories.Add(new Category
                 {
-                    Id = Guid.NewGuid().ToString(),
                     Name = string.Format("Category {0}", i + 1)
                 });
             }

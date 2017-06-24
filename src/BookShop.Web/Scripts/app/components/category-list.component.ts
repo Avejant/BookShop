@@ -42,6 +42,6 @@ export class CategoryListComponent {
     onSelect(category: Category) {
         this.selectedCategory = category;
         console.log("Item " + this.selectedCategory.Id + " has been clicked: loading item viewer...");
-        this.router.navigate(["books/category", this.selectedCategory.Name.toLowerCase().replace(' ','')]);
+        this.router.navigate(["books/category", this.selectedCategory.Id]);
     }
 }

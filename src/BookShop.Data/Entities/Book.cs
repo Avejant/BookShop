@@ -21,11 +21,18 @@ namespace BookShop.Data
         public string Title { get; set; }
         public string Description { get; set; }
         [Required]
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
         [Required]
         public string Price { get; set; }
         [Required]
-        public string AuthorId { get; set; }
+        public int AuthorId { get; set; }
+        [Required]
+        [StringLength(13)]
+        public string ISBN { get; set; }
+        [Required]
+        public int YearOfPublication { get; set; }
+        [Required]
+        public int PageCount { get; set; }
         [Required]
         public int ViewCount { get; set; }
         [Required]

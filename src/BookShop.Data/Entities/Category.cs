@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace BookShop.Data
 {
-
     public class Category
     {
         [Key]
         [Required]
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }

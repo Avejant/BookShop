@@ -29,9 +29,11 @@ namespace BookShop.Data
             modelBuilder.Entity<Book>().HasOne(b => b.Category).WithMany(c => c.Books);
 
             modelBuilder.Entity<Author>().ToTable("Authors");
+            modelBuilder.Entity<Author>().Property(a => a.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Author>().HasMany(a => a.Books).WithOne(b => b.Author);
 
             modelBuilder.Entity<Category>().ToTable("Categories");
+            modelBuilder.Entity<Category>().Property(c => c.Id).ValueGeneratedOnAdd();
             modelBuilder.Entity<Category>().HasMany(c => c.Books).WithOne(b => b.Category);
 
         }
