@@ -16,6 +16,12 @@ namespace BookShop.Web.Controllers
             this.categoryManager = categoryManager;
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(int id)
+        {
+            return new JsonResult(this.categoryManager.GetById(id), DefaultJsonSettings);
+        }
+
         // GET api/categories
         [HttpGet]
         public JsonResult Get()

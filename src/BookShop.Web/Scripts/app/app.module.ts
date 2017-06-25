@@ -13,6 +13,7 @@ import { LoginComponent } from "./components/login.component";
 import { CategoryListComponent } from "./components/category-list.component";
 import { SearchComponent } from "./components/search.component";
 import { CartComponent } from "./components/cart.component";
+import { PaginatedBookListComponent } from "./components/paginated-book-list.component";
 
 //Pages 
 import { BookViewPage } from "./pages/book-view.page";
@@ -49,7 +50,8 @@ import { AuthHttp } from "./wrappers/auth.http";
         CategoryListComponent,
         CategoryBooksListPage,
         SearchComponent,
-        CartComponent
+        CartComponent,
+        PaginatedBookListComponent
     ],
     // modules
     imports: [

@@ -10,9 +10,9 @@ import { Router } from "@angular/router";
         <div class="panel panel-default">
             <div class="panel-heading category-list-header"><span><strong>{{title}}</strong></span></div>
             <ul class="list-group">
-                <li class="list-group-item" *ngFor="let category of categories" (click)="onSelect(category)">
+                <li class="list-group-item" *ngFor="let category of categories">
                     <div class="category-item">
-                    <span>{{category.Name}}</span>
+                    <span (click)="onSelect(category)">{{category.Name}}</span>
                     </div>
                 </li>
             </ul>
@@ -41,7 +41,7 @@ export class CategoryListComponent {
 
     onSelect(category: Category) {
         this.selectedCategory = category;
-        console.log("Item " + this.selectedCategory.Id + " has been clicked: loading item viewer...");
-        this.router.navigate(["books/category", this.selectedCategory.Id]);
+        console.log("Category with id= " + this.selectedCategory.Id + " has been clicked: loading category viewer...");
+        this.router.navigate(["books/category", this.selectedCategory.Id], {  });
     }
 }

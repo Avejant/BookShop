@@ -9,7 +9,7 @@ export class CategoryService {
 
     private baseUrl = "api/categories/";
 
-    get(id?: string) {
+    get(id?: number) {
         var url = this.baseUrl;
         if (id != null) { url += id; }
 

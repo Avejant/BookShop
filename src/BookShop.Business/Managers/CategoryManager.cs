@@ -21,5 +21,12 @@ namespace BookShop.Business.Managers
         {
             return this.dbContext.Categories.Select(c => new CategoryViewModel {Id = c.Id, Name = c.Name });
         }
+
+        public CategoryViewModel GetById(int id)
+        {
+            var category = this.dbContext.Categories.Single(c => c.Id == id);
+            return new CategoryViewModel { Id = category.Id, Name = category.Name };
+              
+        }
     }
 }

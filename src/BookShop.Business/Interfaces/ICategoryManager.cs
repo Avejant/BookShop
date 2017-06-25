@@ -5,6 +5,7 @@ namespace BookShop.Business.Interfaces
 {
     public interface ICategoryManager
     {
+        CategoryViewModel GetById(int id);
         IEnumerable<CategoryViewModel> GetAll();
     }
 }
