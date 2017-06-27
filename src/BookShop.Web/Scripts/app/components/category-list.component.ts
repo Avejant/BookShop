@@ -5,20 +5,7 @@ import { Router } from "@angular/router";
 
 @Component({
     selector: "category-list",
-    template: `
-        <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-heading category-list-header"><span><strong>{{title}}</strong></span></div>
-            <ul class="list-group">
-                <li class="list-group-item" *ngFor="let category of categories">
-                    <div class="category-item">
-                    <span (click)="onSelect(category)">{{category.Name}}</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        </div>
-`
+    templateUrl: "./../templates/category-list.component.html"
 })
 
 export class CategoryListComponent {

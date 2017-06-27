@@ -2,10 +2,7 @@
 
 @Component({
     selector: "author-books-list-page",
-    template: `        
-       <category-list></category-list>
-        <p>bla=bla=bla</p>
-    `
+    templateUrl: "./../templates/author-list.page.html"
 })
 
 export class AuthorListPage { }

@@ -5,11 +5,12 @@
     gp_sourcemaps = require('gulp-sourcemaps'),
     gp_typescript = require('gulp-typescript'),
     gp_uglify = require('gulp-uglify'),
-    gp_babel = require('gulp-babel');
+    gp_babel = require('gulp-babel'),
+    gp_embed_templates = require('gulp-angular-embed-templates');
 
 /// Define paths
 var srcPaths = {
-    app: ['Scripts/app/main.ts', 'Scripts/app/**/*.ts'],
+    app: ['Scripts/app/main.ts', 'Scripts/app/**/*.ts', 'Scripts/app/**/*.html'],
     js: [
         'Scripts/js/**/*.js',
         'node_modules/core-js/client/shim.min.js',
@@ -41,6 +42,7 @@ var destPaths = {
 gulp.task('app', ['app_clean'], function () {
     return gulp.src(srcPaths.app)
         .pipe(gp_sourcemaps.init())
+        .pipe(gp_embed_templates())
         .pipe(gp_typescript(require('./tsconfig.json').compilerOptions))
         .pipe(gp_babel({ presets: ['es2015'] }))
         .pipe(gp_uglify({ mangle: false }))

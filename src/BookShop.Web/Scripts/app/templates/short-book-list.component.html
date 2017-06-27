@@ -1,0 +1,28 @@
+﻿<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center"><b>{{title}}</b></h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <ul class="books-list col-md-10">
+                <li class="col-md-3" *ngFor="let book of books" [class.selected]="book === selectedBook">
+                    <div class="thumbnail">
+                        <img src="http://placehold.it/200x200" alt="">
+                    </div>
+                    <div class="caption">
+                        <center>
+                            <p><i>{{book.Author}}</i></p>
+                            <a class="link-without-href" (click)="onSelect(book)"><p><b>{{book.Title}}</b></p></a>
+                            <p>Price: {{book.Price}}</p>
+                            <button type="button" class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Buy
+                            </button>
+                        </center>
+                    </div>
+                </li>
+            </ul>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+</div>

@@ -2,9 +2,7 @@
 
 @Component({
     selector: "cart",
-    template: `             
-        <span><span class="glyphicon glyphicon-shopping-cart"></span> Cart: <a href="#"> <b>0</b> items</a></span>
-    `
+    templateUrl: "./../templates/cart.component.html"
 })
 
 export class CartComponent { }

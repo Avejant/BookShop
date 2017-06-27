@@ -5,12 +5,7 @@ import { AuthService } from "../services/auth.service";
 
 @Component({
     selector: "login-page",
-    template: `
-        <category-list></category-list>
-        <div class="col-md-8">
-        <login></login>
-        </div>
-    `
+    templateUrl: "./../templates/login.page.html"
 })
 
 export class LoginPage {

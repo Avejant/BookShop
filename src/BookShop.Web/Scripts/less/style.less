@@ -40,3 +40,29 @@ a.link-without-href{
 .navbar-search input {
     width: @navbarSearchWidth;
 }
+
+span.span-btn{
+   &:hover, &:active {cursor: pointer; background-color: #0079a1; }   
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.pagination>li>a{
+   border: 1px solid darkgrey;
+   color:dimgray;
+   font-weight: bold;
+   &:hover{
+     border: 1px solid darkgrey;
+     color: darkblue;
+     font-weight: bold;
+   }
+}
+
+.pagination>.disabled>a{
+   border: 1px solid darkgrey;
+   &:hover{
+     border: 1px solid darkgrey;
+   }
+}

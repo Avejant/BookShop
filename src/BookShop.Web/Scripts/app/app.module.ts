@@ -36,6 +36,10 @@ import { AuthService } from "./services/auth.service";
 //Wrappers
 import { AuthHttp } from "./wrappers/auth.http";
 
+//Pipes
+import { TruncateCharactersPipe } from './pipes/truncate-characters.pipe'
+import { TruncateWordsPipe } from './pipes/truncate-words.pipe'
+
 @NgModule({
     // directives, components, pages and pipes
     declarations: [
@@ -51,7 +55,9 @@ import { AuthHttp } from "./wrappers/auth.http";
         CategoryBooksListPage,
         SearchComponent,
         CartComponent,
-        PaginatedBookListComponent
+        PaginatedBookListComponent,
+        TruncateCharactersPipe,
+        TruncateWordsPipe
     ],
     // modules
     imports: [
