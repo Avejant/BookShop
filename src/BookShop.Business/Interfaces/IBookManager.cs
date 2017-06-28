@@ -13,5 +13,6 @@ namespace BookShop.Business.Interfaces
         IEnumerable<BookViewModel> GetAll();
         IEnumerable<BookViewModel> GetAll(int count, SortingType sortingType = SortingType.None, bool ascSorting = true);
         BookViewModel GetById(int id);
+        PagedListViewModel<BookViewModel> GetPage(int pageSize, int currentPageIndex);
     }
 }

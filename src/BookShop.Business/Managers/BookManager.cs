@@ -54,6 +54,16 @@ namespace BookShop.Business.Managers
             return this.EntityToViewModel(this.dbContext.Books.Single(b => b.Id == id), authors, categories);
         }
 
+        public PagedListViewModel<BookViewModel> GetPage(int pageSize, int currentPage)
+        {
+            var categories = this.dbContext.Categories.Select(c => c);
+            var authors = this.dbContext.Authors.Select(a => a);
+            var totalCount = this.dbContext.Books.Count();
+            var result = this.dbContext.Books.Skip((currentPage - 1) * pageSize).Take(pageSize);
+            var items = result.Select(b => this.EntityToViewModel(b, authors, categories));
+            return new PagedListViewModel<BookViewModel>(items, currentPage, totalCount , pageSize);
+        }
+
         private BookViewModel EntityToViewModel(Book model, IEnumerable<Author> authors, IEnumerable<Category> categories)
         {
             return new BookViewModel

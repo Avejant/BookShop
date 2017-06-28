@@ -18,18 +18,8 @@ namespace BookShop.Web.Controllers
         {
             this.bookManager = bookManager;
         }
-        
-        #region RESTful Conventions
-        /// <summary>
-        /// GET: api/books
-        /// </summary>
-        /// <returns>Nothing: this method will raise a HttpNotFound HTTP exception, since we're not supporting this API call.</returns>
-        [HttpGet()]
-        public IActionResult Get()
-        {
-            return NotFound(new { Error = "not found" });
-        }
 
+        #region RESTful Conventions
         /// <summary>
         /// GET: api/bboks/{id}
         /// ROUTING TYPE: attribute-based
@@ -42,6 +32,12 @@ namespace BookShop.Web.Controllers
                 DefaultJsonSettings);
         }
         #endregion
+
+        [HttpGet]
+        public IActionResult Get(int pageSize, int pageNumber)
+        {
+            return new JsonResult(this.bookManager.GetPage(pageSize, pageNumber), DefaultJsonSettings);
+        }
 
         [HttpGet("GetLatest")]
         public IActionResult GetLatest()

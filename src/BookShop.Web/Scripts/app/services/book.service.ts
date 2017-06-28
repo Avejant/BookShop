@@ -8,10 +8,17 @@ import { Query } from "../models/query";
 export class BookService {
     constructor(private http: Http) { }
 
-    private baseUrl = "api/books/";
+    private baseUrl = "api/books";
+
+    getPage(pageSize: number, pageNumber: number) {
+        var url = this.baseUrl + "?pageSize=" + pageSize + "&pageNumber=" + pageNumber;
+        return this.http.get(url)
+            .map(response => response.json())
+            .catch(this.handleError);
+    }
 
     getLatest(num?: number) {
-        var url = this.baseUrl + "GetLatest/";
+        var url = this.baseUrl + "/GetLatest/";
         if (num != null) { url += num; }
         return this.http.get(url)
             .map(response => response.json())
@@ -19,7 +26,7 @@ export class BookService {
     }
 
     getRandom(num?: number) {
-        var url = this.baseUrl + "GetRandom/";
+        var url = this.baseUrl + "/GetRandom/";
         if (num != null) { url += num; }
         return this.http.get(url)
             .map(response => response.json())
@@ -27,7 +34,7 @@ export class BookService {
     }
 
     getMostViewed(num?: number) {
-        var url = this.baseUrl + "GetMostViewed/";
+        var url = this.baseUrl + "/GetMostViewed/";
         if (num != null) { url += num; }
         return this.http.get(url)
             .map(response => response.json())
@@ -35,21 +42,21 @@ export class BookService {
     }
 
     getCustom(query: Query) {
-        var url = this.baseUrl + "Search?id=" + query.Id + "&title=" + query.Title + "&author=" + query.Author;
+        var url = this.baseUrl + "/Search?id=" + query.Id + "&title=" + query.Title + "&author=" + query.Author;
         return this.http.get(url)
             .map(response => response.json())
             .catch(this.handleError);
     }
 
     getByAuthor(authorId: string) {
-        var url = this.baseUrl + "author/" + authorId;
+        var url = this.baseUrl + "/author/" + authorId;
         return this.http.get(url)
             .map(response => response.json())
             .catch(this.handleError);
     }
 
     get(id: number) {
-        var url = this.baseUrl + id;
+        var url = this.baseUrl + "/" + id;
         return this.http.get(url)
             .map(response => response.json())
             .catch(this.handleError);

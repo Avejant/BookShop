@@ -1,39 +1,39 @@
 ﻿<div class="books-section">
-    <div *ngFor="#number of [1,2,3,4,5,6,7,8,9,10]" class="media">
-        <div class="media-left">
-            <img src="http://placehold.it/100x142">
+    <div *ngFor="let book of books">
+        <div class="media">
+            <div class="media-left">
+                <img src="http://placehold.it/100x142">
+            </div>
+            <div class="media-body">
+                <span><a class="link-without-href"><b>{{book.Title}}</b></a></span>
+                <br>
+                <span><i>{{book.Author}}</i></span>
+                <p class="text-justify">
+                    {{book.Description | truncate: 240}}
+                </p>
+                <h4>
+                    <span class="label label-primary span-btn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Buy</span>
+                    <span class="label label-primary"><b>Price: </b> {{book.Price}}</span>
+                </h4>
+            </div>
         </div>
-        <div class="media-body">
-            <span><a class="link-without-href"><b>Book title</b></a></span>
-            <br>
-            <span><i>Book author</i></span>
-            <p class="text-justify">
-                {{loremIpsum | truncate: 240}}
-            </p>
-            <h4>
-                <span class="label label-primary span-btn"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Buy</span>
-                <span class="label label-primary"><b>Price: </b> 12,4$</span>
-            </h4>
-        </div>
+        <hr />
     </div>
 </div>
-<div class="pagination-section">
+<div *ngIf="page" class="pagination-section">
     <center>
+        
         <nav aria-label="Page navigation">
             <ul class="pagination">
-                <li class="disabled">
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
+                <li [class.disabled] ="page.currentPage == 1">
+                    <a href="" (click)="previousPage()" aria-label="Previous">
+                        <span aria-hidden="true">Prev</span>
                     </a>
                 </li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">...</a></li>
-                <li><a href="#">9</a></li>
-                <li><a href="#">10</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
+                <li *ngFor="let pageNumber of pageNumbers" (click)="goToPage(pageNumber)" [class.active] ="pageNumber == page.currentPage"><a href="">{{pageNumber}}</a></li>
+                <li [class.disabled] ="page.currentPage == page.totalPageCount">
+                    <a href="" (click)="nextPage()" aria-label="Next">
+                        <span aria-hidden="true">Next</span>
                     </a>
                 </li>
             </ul>
